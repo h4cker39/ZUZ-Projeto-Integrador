@@ -35,8 +35,8 @@ public class Usuario {
 	private String cpf;
 	
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date datanascimento = new java.sql.Date(System.currentTimeMillis()); 
+	@Temporal(TemporalType.DATE)
+	private Date datanascimento;
 	
 	@NotNull
 	@Size(min = 6 , max = 20)
@@ -55,6 +55,9 @@ public class Usuario {
 	@OneToMany(mappedBy = "usuario" , cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
+	
+	@OneToMany(mappedBy = "usuario" ,cascade = CascadeType.ALL)
+	private List<Consulta> consulta;
 
 	public long getId() {
 		return id;
@@ -128,11 +131,12 @@ public class Usuario {
 		this.postagem = postagem;
 	}
 
+	public List<Consulta> getConsulta() {
+		return consulta;
+	}
 
-	
-	
-	
-	
-	
+	public void setConsulta(List<Consulta> consulta) {
+		this.consulta = consulta;
+	}	
 
 }
