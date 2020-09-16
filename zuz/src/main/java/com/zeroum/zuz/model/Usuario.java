@@ -31,6 +31,9 @@ public class Usuario {
 	private String nome;
 	
 	@NotNull
+	private String usuario;
+	
+	@NotNull
 	@Size(min = 11, max = 11)
 	private String cpf;
 	
