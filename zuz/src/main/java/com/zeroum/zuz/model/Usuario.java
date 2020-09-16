@@ -37,12 +37,11 @@ public class Usuario {
 	@Size(min = 11, max = 11)
 	private String cpf;
 	
-	
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	private Date datanascimento;
 	
 	@NotNull
-	@Size(min = 6 , max = 20)
+	@Size(min = 6)
 	private String senha;
 	
 	@NotNull
