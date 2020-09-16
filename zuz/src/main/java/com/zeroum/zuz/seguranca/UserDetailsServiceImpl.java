@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.zeroum.zuz.model.Usuario;
+import com.zeroum.zuz.model.User;
 import com.zeroum.zuz.repository.UsuarioRepository;
 
 @Service
@@ -19,7 +19,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		Optional<Usuario> user = userRepository.findByUsuario(userName);
+		Optional<User> user = userRepository.findByUsuario(userName);
 		user.orElseThrow(() -> new UsernameNotFoundException(userName + " not found"));
 		
 		return user.map(UserDetailsImpl ::new).get();

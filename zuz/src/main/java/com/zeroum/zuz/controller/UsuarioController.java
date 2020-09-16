@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.zeroum.zuz.model.Usuario;
+import com.zeroum.zuz.model.User;
 import com.zeroum.zuz.model.UsuarioLogin;
 import com.zeroum.zuz.repository.UsuarioRepository;
 import com.zeroum.zuz.service.UsuarioService;
@@ -33,23 +33,23 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	
 	@GetMapping
-	public ResponseEntity<List<Usuario>> getAll(){
+	public ResponseEntity<List<User>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Usuario> getById(@PathVariable long id){
+	public ResponseEntity<User> getById(@PathVariable long id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping
-	public ResponseEntity<Usuario> post(@RequestBody Usuario usuario){
+	public ResponseEntity<User> post(@RequestBody User usuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));
 	}
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario){
+	public ResponseEntity<User> cadastrar(@RequestBody User usuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.CadastrarUsuario(usuario));
 	}
 	
@@ -61,7 +61,7 @@ public class UsuarioController {
 	
 	
 	@PutMapping
-	public ResponseEntity<Usuario> put (@RequestBody Usuario usuario){
+	public ResponseEntity<User> put (@RequestBody User usuario){
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(usuario));
 	}
 	

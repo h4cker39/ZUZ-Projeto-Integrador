@@ -32,7 +32,7 @@ public class Consulta {
 	
 	@ManyToOne
 	@JsonIgnoreProperties("consulta")
-	private Usuario usuario;
+	private User usuario;
 
 	public long getId() {
 		return id;
@@ -58,11 +58,11 @@ public class Consulta {
 		this.descricao = descricao;
 	}
 
-	public Usuario getUsuario() {
+	public User getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(User usuario) {
 		this.usuario = usuario;
 	}
 	

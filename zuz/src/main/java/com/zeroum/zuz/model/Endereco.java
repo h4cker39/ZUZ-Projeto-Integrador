@@ -41,7 +41,7 @@ public class Endereco {
 	
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JsonIgnoreProperties("endereco")
-	private Usuario usuario;
+	private User usuario;
 
 	public long getId() {
 		return id;
@@ -91,11 +91,11 @@ public class Endereco {
 		this.complemento = complemento;
 	}
 
-	public Usuario getUsuario() {
+	public User getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(User usuario) {
 		this.usuario = usuario;
 	}
 	

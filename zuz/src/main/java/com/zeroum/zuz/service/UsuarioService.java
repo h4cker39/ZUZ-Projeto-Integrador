@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.zeroum.zuz.model.Usuario;
+import com.zeroum.zuz.model.User;
 import com.zeroum.zuz.model.UsuarioLogin;
 import com.zeroum.zuz.repository.UsuarioRepository;
 
@@ -18,7 +18,7 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository repository;
 	
-	public Usuario CadastrarUsuario(Usuario usuario) {
+	public User CadastrarUsuario(User usuario) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
 		String senhaEncoder = encoder.encode(usuario.getSenha());
@@ -31,7 +31,7 @@ public class UsuarioService {
 	public Optional<UsuarioLogin> Logar (Optional<UsuarioLogin> user){
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
-		Optional<Usuario> usuario = repository.findByUsuario(user.get().getUsuario());
+		Optional<User> usuario = repository.findByUsuario(user.get().getUsuario());
 		
 		if(usuario.isPresent()) {
 			if(encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {

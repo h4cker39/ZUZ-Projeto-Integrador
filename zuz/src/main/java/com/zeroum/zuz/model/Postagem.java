@@ -33,7 +33,7 @@ public class Postagem {
 	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
-	private Usuario usuario;
+	private User usuario;
 	
 	@Min(0)
 	private long curtida;
@@ -74,11 +74,11 @@ public class Postagem {
 		this.curtida = curtida;
 	}
 
-	public Usuario getUsuario() {
+	public User getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(User usuario) {
 		this.usuario = usuario;
 	}
 

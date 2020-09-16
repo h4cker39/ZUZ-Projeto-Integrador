@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.zeroum.zuz.model.Usuario;
+import com.zeroum.zuz.model.User;
 
 public class UserDetailsImpl implements UserDetails{
 
@@ -14,7 +14,7 @@ public class UserDetailsImpl implements UserDetails{
 	private String userName;
 	private String password;
 	
-	public UserDetailsImpl(Usuario user) {
+	public UserDetailsImpl(User user) {
 		this.userName = user.getNome();
 		this.password = user.getSenha();
 	}

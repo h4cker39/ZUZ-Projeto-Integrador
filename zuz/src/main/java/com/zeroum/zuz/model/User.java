@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "TB_USUARIO")
-public class Usuario {
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +40,14 @@ public class Usuario {
 	//@Temporal(TemporalType.DATE)
 	private Date datanascimento;
 	
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
 	@NotNull
 	@Size(min = 6)
 	private String senha;
