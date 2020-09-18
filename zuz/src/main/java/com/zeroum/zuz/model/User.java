@@ -40,13 +40,6 @@ public class User {
 	//@Temporal(TemporalType.DATE)
 	private Date datanascimento;
 	
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
 
 	@NotNull
 	@Size(min = 6)
@@ -55,8 +48,10 @@ public class User {
 	@NotNull
 	private String tipousuario;
 	
-	@Size(min = 4 , max = 10)
+	
+	@Size(max = 10)
 	private String crm;
+	
 	
 	@OneToOne
 	@JsonIgnoreProperties("usuario")
@@ -148,5 +143,14 @@ public class User {
 	public void setConsulta(List<Consulta> consulta) {
 		this.consulta = consulta;
 	}	
+	
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
 
 }
