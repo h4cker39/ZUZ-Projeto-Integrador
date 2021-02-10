@@ -11,6 +11,19 @@ import org.springframework.stereotype.Service;
 import com.zeroum.zuz.model.User;
 import com.zeroum.zuz.model.UsuarioLogin;
 import com.zeroum.zuz.repository.UsuarioRepository;
+import import org.owasp.encoder.Encode;
+/**
+ Import via pom.xml OWASP URI Encoder current one usage may present vulnerabilities.
+ https://www.codota.com/code/java/classes/org.owasp.encoder.Encode
+ 
+ <!-- https://mvnrepository.com/artifact/org.owasp.encoder/encoder -->
+<dependency>
+    <groupId>org.owasp.encoder</groupId>
+    <artifactId>encoder</artifactId>
+    <version>1.2.3</version>
+</dependency>
+ 
+**/
 
 @Service
 public class UsuarioService {
@@ -20,8 +33,8 @@ public class UsuarioService {
 	
 	public User CadastrarUsuario(User usuario) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		
-		String senhaEncoder = encoder.encode(usuario.getSenha());
+		//Owasp is more reliable for encoding to prevent vulnerabilities.
+		String senhaEncoder = Encoder.forUriComponent(usuario.getSenha());
 		usuario.setSenha(senhaEncoder);
 		
 		
